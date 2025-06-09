@@ -1,3 +1,7 @@
 variable "praveen" {
   
 }
+
+variable "vikram" {
+  
+}
