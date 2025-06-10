@@ -49,37 +49,37 @@ module "subnet2" {
 
 # }
 
-# module "vm2" {
+module "vm2" {
 
-#   source              = "../child_module/azurerm_linux_virtual_machine"
-#   nic_name            = "backend-nic"
-#   pip_name            = "backend-pip"
-#   location            = "West Europe"
-#   resource_group_name = "todo-hard-rg"
-#   subnet_id           = "/subscriptions/f9182cf3-79c7-402d-a90b-c4ec97f72f88/resourceGroups/todo-hard-rg/providers/Microsoft.Network/virtualNetworks/todo-hard-vnet/subnets/backend-subnet"
-#   vm_name             = "backend-vm"
-#   vm_size             = "Standard_B2ms"
-#   admin_username      = "adminuser"
-#   admin_password      = "Iwant2learn2025" # Use a secure password in production
-#   image_publisher     = "Canonical"
-#   image_offer         = "0001-com-ubuntu-server-focal"
-#   image_sku           = "20_04-lts"
+  source              = "../child_module/azurerm_linux_virtual_machine"
+  nic_name            = "backend-nic"
+  pip_name            = "backend-pip"
+  location            = "West Europe"
+  resource_group_name = "todo-hard-rg"
+  subnet_id           = "/subscriptions/f9182cf3-79c7-402d-a90b-c4ec97f72f88/resourceGroups/todo-hard-rg/providers/Microsoft.Network/virtualNetworks/todo-hard-vnet/subnets/backend-subnet"
+  vm_name             = "backend-vm"
+  vm_size             = "Standard_B2ms"
+  admin_username      = "adminuser"
+  admin_password      = "Iwant2learn2025" # Use a secure password in production
+  image_publisher     = "Canonical"
+  image_offer         = "0001-com-ubuntu-server-focal"
+  image_sku           = "20_04-lts"
 
-# }
+}
 
 
-# module "named_sql_server" {
-#   source                       = "../child_module/azurerm_mssql_server"
-#   mssql_server_name            = "todohardsqlserver45"
-#   resource_group_name          = "todo-hard-rg"
-#   location                     = "centralindia"
-#   administrator_login          = "sqladmin"
-#   administrator_login_password = "Iwant2learn2025" # Use a secure password in production
+module "sql_server" {
+  source                       = "../child_module/azurerm_mssql_server"
+  mssql_server_name            = "todohardsqlserver45"
+  resource_group_name          = "todo-hard-rg"
+  location                     = "centralindia"
+  administrator_login          = "sqladmin"
+  administrator_login_password = "Iwant2learn2025" # Use a secure password in production
 
-# }
+}
 
-# module "sql_database" {
-#   source              = "../child_module/azurerm_mssql_database"
-#   database_name       = "todoharddb"
-#   server_id           = "/subscriptions/f9182cf3-79c7-402d-a90b-c4ec97f72f88/resourceGroups/todo-hard-rg/providers/Microsoft.Sql/servers/todohardsqlserver45"
-# }
+module "sql_database" {
+  source              = "../child_module/azurerm_mssql_database"
+  database_name       = "todoharddb"
+  server_id           = "/subscriptions/f9182cf3-79c7-402d-a90b-c4ec97f72f88/resourceGroups/todo-hard-rg/providers/Microsoft.Sql/servers/todohardsqlserver45"
+}
